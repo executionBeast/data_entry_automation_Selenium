@@ -1,8 +1,23 @@
 import pyautogui as pg
 from time import sleep
 
-date='date20.tiff'
-datef='date20.tiff' 
+date='date25f.tiff'
+datef='date25f.tiff'
+
+
+def locateDate(date):
+  sleep(0.2)
+  allOcurrence = list(pg.locateAllOnScreen(date))
+  print(allOcurrence)
+  coordinates = [pg.center(allOcurrence) for allOcurrence in allOcurrence]
+  print("Located Date Crrdnate : ",coordinates)
+  pg.click(coordinates[0])
+  # for coord in coordinates: 
+  #   print(f"Image found at: {coord}")
+
+# locateDate()
+
+
 
 print("Date is : "+date+"\n")
 
@@ -22,23 +37,32 @@ def clickDate():
   # print("dateFrom : {} dateTo : {} ".format(dateFrom,"yg"))
   #pg.click('dateFrom.png')
   try:
-    pg.click('datefrom.tiff')
+    pg.click('dateFrom.tiff')
     sleep(0.5)
-    pg.click(date)
+    # pg.click(date)
+    locateDate(date)
+    
     sleep(0.4) 
-  except:
-    print("date from not filled")
+  except all:
+    print("date from not filled",all)
 
   # selecting date to
   try:
-    pg.click('dateto.tiff')
+    allOcurrence = list(pg.locateAllOnScreen('dateFrom.tiff'))
+    coordinates = [pg.center(allOcurrence) for allOcurrence in allOcurrence]
+    pg.click(coordinates[1])
+    # pg.click('dateTo.tiff')
     sleep(0.5)
-    pg.click(datef)
-  except:
-    print('date to not  filled')
+    # pg.click('dateTo.tiff')
+    # sleep(1.5)
+    # pg.click(datef)
+    locateDate(date)
+
+  except all:
+    print('date to not  filled',all)
 
 
-
+# clickDate()
 
 
 # import random

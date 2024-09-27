@@ -4,14 +4,15 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import Select
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 from time import sleep
 import pyautogui as pg
 from clickDate import clickDate
 
 visited = ['Select a AWC']
-
-#visited = ['Select a AWC', 'AKHAINI(Shyama)', 'BABRAPUR(Chinta)', 'BABRAPUR(Shakuntla)', 'BACHAPAR(Chandrakanta)', 'BACHAPAR(Meera)', 'BACHAPAR(Santosh)', 'BACHAPAR(Vidyawati)', 'BADASARI(Indu Tiwari)', 'BAGHA(Sarita)', 'BAHERI (POONAM)', 'BAHERI(Saroj)', 'BANKATA(Gayatri)', 'BANKATA(Gudiya)', 'BELAHI(Meena)', 'BELAONA(Arti)', 'BHABHNAULI(Champa)', 'BHUDADIH(Geeta)', 'BHUDADIH(Suman)', 'BICHIBOJH(Lalti)', 'BISHHAR(Mamta)', 'BISHHAR(pushpa)', 'CHACHARI(Nilam)', 'CHACHARI(Urmila)', 'CHAKBAHADUN(Geeta)', 'CHAKBAHADUN(Munni)', 'CHAKJALALPUR(Seema)', 'CHAKJIYA(Punam)', 'CHAKMOTI(Reema)', 'CHAKRA(Sanjita)', 'CHAKUJIYAR(Panna)', 'CHAKUSHAULI(Asha)', 'CHAKUSHAULI(Sanju)', 'CHARWA BARWA(Dewanti)', 'CHARWA BARWA(Habibunisa)', 'CHARWA BARWA(Meena)', 'CHARWA BARWA(Sona Devi)', 'CHARWA BARWA(Tara)', 'CHITUPUR(Rajkumari)', 'CHOTIVISHAHAR(Manju)', 'DAKINGANJ', 'DHADNSARA(Nilam)', 'DHANEJA(Rinku)', 'DHANEJA(Vijyanti)', 'DOBHWA(Lalsa)', 'Doghara (Seema)', 'Doghara(Neetu)', 'EKAIL(Gangotri)', 'EKAIL(Geeta)', 'FIROJPUR(Shailkumari)', 'FIROJPUR(Urmila)', 'GADMALPUR(Babita)', 'GADMALPUR(Manki)', 'GADMALPUR(Usha)', 'GAURAMADANPURA(Aarti)', 'GAURAMADANPURA(Vimla)', 'GAURI(Kiran)', 'GAURI(Omlata)', 'GAURI(Suman)', 'GAURNIYA(Mansha)', 'GODWARA(Indu Yadav)', 'GOPALPUR(Punam)', 'HARIPUR(Ambika)', 'HARIPUR(Sharda)', 'JAGDARA(Durgaji Tiwari)', 'JAGDARA(Tara)', 'JANUWAL(Geeta)', 'JANUWAL(Kismat)', 'JETHWAR(Durgawati)', 'JETHWAR(Sunanda)', 'JIMICHAK(phulwanti)', 'JOGESHARA(Munni)', 'KACHILA(Gyanti)', 'KADSAR(Gyanti)', 'KAITHAULI(Maya)', 'KAITHAULI(Radhika)', 'KALYADDEHRA(Chandrawati)', 'KALYADDEHRA(Sushila)', 'KHABASPUR(Nirmala)', 'KHADRSHARA(Anju)', 'KHADRSHARA(Savitri)', 'KHADRSHARA(Subhawati)', 'KHADRSHARA(Urmila)', 'KHAIRACHAK(Sangeeta)', 'KHEJURI P.S 1(Nisha)', 'KHEJURI P.S.2(Kanti)', 'KHEJURI(Usha)', 'KHEJURIP.S.2(Munni)', 'KHEJURIP.S.3(Sunita)', 'KHERACHAK(Suman)', 'KIKODARA(Manju)', 'KIKODARA(Tapasya)', 'KIKODHA(Meera)', 'KUDHI(Kunti)', 'LAKHNAPAR(Gayatri)', 'LEDUHI(Krishna)', 'MAHULANPAR(Meera)', 'MAHULANPAR(Rekha)', 'MASUMPUR(Afrin)', 'MASUMPUR(Amravati)', 'MASUMPUR(Saroj)', 'MASUMPUR(Sunaina)', 'MEULI(Manju)', 'MEULI(Nirmala)', 'MISHRAULI(Anjana)', 'MISHRAULI(Rinku)', 'MISHRAULI(Shubhawati)', 'MUDERA(Kavitaa)', 'MUJHI(Usha)', 'NAHILAPAR', 'NANHUL(Nayantara)', 'NANHUL(Usha)', 'PAHRAJPUR(Geeta)', 'PAKADI((Rita Singh)', 'PAKADI(Dropadi)', 'PAKADI(Kanaklata)', 'PAKADI(Rita Devi)', 'PAKADI(Urmila Gupta)', 'PAKADI(Urmila devi)', 'PAKADI(Usha)', 'PANDAH(Meena Rai)', 'PRASHADPUR(Gyanti)', 'PRASHADPUR(Sheela)', 'PUR(Asha)', 'PUR(Meera)', 'PUR(Mina)', 'PUR(Pinki)', 'PUR(Poonam)', 'PUR(Sanju)', 'PUR(Sunita)', 'RAKSHA(Meena)', 'RAMAPAR(Kaanti)', 'RAMAPAR(Umraavati)', 'RATSHI(Chinta)', 'RATSHI(Sheela)', 'RUPWAR(Reeta)', 'RUPWAR(Seema)', 'RUPWAR(Usha)', 'SAHULAI(M)(Sureman)', 'SAHULAI(Manju Yadav)']
+# visited =
 chrome_options = webdriver.ChromeOptions()
 prefs = {"credentials_enable_service": False,"profile.password_manager_enabled": False}
 chrome_options.add_experimental_option("excludeSwitches", ['enable-automation'])
@@ -73,10 +74,10 @@ def Automate(visited,closeDriver):
 
     
     # sleep(0.1)
-    Theme.select_by_index('3')
+    Theme.select_by_index('1')
     # sleep(0.3)
-
-    clickDate()  #click date 06/09/2023
+ 
+    clickDate()  #click date 01/09/2024
     # sleep(0.3)
 
     Level.select_by_value('5')   #AWC   ise select karte hi AWS selection khul jaayega 
@@ -128,45 +129,89 @@ def Automate(visited,closeDriver):
         except:
             print("Activity Option not Loaded!")
             sleep(0.2)
-
-    Activity.select_by_value('18')
+    # //Warning 22 give error max 5 entry
+    Activity.select_by_value('7')
     sleep(0.1) 
 
     AdultMale = driver.find_element(By.NAME,"CountAdultMale")
     AdultFemale = driver.find_element(By.NAME,"CountAdultFemale")
     ChildMale = driver.find_element(By.NAME,"CountChildMale")
     ChildFemale = driver.find_element(By.NAME,"CountChildFemale")
+    AdolescentGirlFemale =  driver.find_element(By.NAME,"AdolescentGirlFemale")
 
     AdultMale.clear()
-    AdultMale.send_keys(random.randint(15,50))
+    AdultMale.send_keys(random.randint(10,30))
     sleep(0.1)
     AdultFemale.clear()
-    AdultFemale.send_keys(random.randint(15,55))
+    AdultFemale.send_keys(random.randint(10,25))
     sleep(0.1)
     ChildMale.clear()
-    ChildMale.send_keys(random.randint(11,48))
+    ChildMale.send_keys(random.randint(11,30))
     sleep(0.1)
     ChildFemale.clear()
-    ChildFemale.send_keys(random.randint(13,50))
+    ChildFemale.send_keys(random.randint(13,30))
+
+    sleep(0.1)
+    AdolescentGirlFemale.clear()
+    AdolescentGirlFemale.send_keys(random.randint(11,25))
 
     sleep(0.5)
     pg.scroll(-4)
     pg.click('description.png')
     sleep(0.1)
     driver.execute_script("document.querySelector('.submit_button_box button').click();") #click submit
-    while True:
-        try:
-            if driver.find_elements(By.CLASS_NAME, "form-submitted-section"):
-                print("Successfully Submitted")
-                sleep(2)
+    try:
+        element = WebDriverWait(driver, 2).until(
+            EC.presence_of_element_located((By.XPATH, "//div[contains(@class, 'form-submitted-section')]//p[text()='Request denied. You can perform up to 5 activities per day.']"))
+        )
+        print("'Request denied. You can perform up to 5 activities per day.'")
+        for awc in allAWC:
+            if awc.get_attribute("text") in visited:
+                continue
+            if awc.get_attribute("text") =='pandah(Sonamati)':  
+                closeDriver = True
+            visited.append(awc.get_attribute("text"))
+            awc.click()    #selecting the awc
+            sleep(0.2)
+            print(visited)
+            driver.execute_script("document.querySelector('.submit_button_box button').click();") #click submit
+            #There was an try except to check for repeated occurene of Request Denied
+            # driver.execute_script("window.scrollTo(0, 0);")
+            isSucces = False
+            try:
+                element = WebDriverWait(driver, 2).until(
+                     EC.presence_of_element_located((By.XPATH, "//div[contains(@class, 'form-submitted-section')]//p[text()='Successfully Submitted']"))
+                )
+                
+                print("The form has been successfully submitted.")
+                isSucces = True
+            except Exception as e:
+                print(f"Element not found: {e}")
+                continue
+            if isSucces:
+                print("-----------------> Submitted Succefuly After Handeling Request Denied! ")
                 break
-        except:
-            print("Form Submission is ongoing!")
-            sleep(0.5)
+
+    except Exception as e:
+        print(f"Element not found: {e}")
+
+    
 
 
-    sleep(1)
+    # while True:
+    #     try:
+    #         if driver.find_elements(By.CLASS_NAME, "form-submitted-section"):
+    #             print("Successfully Submitted")
+    #             sleep(1)
+    #             break
+    #     except:
+    #         print("Form Submission is ongoing!")
+    #         sleep(0.5)
+
+
+    sleep(0.4)
     pg.scroll(5)
+    pg.scroll(2)
     if closeDriver:
         print('Closing Chrome Driver....!')
         driver.close()

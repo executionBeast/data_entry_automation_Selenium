@@ -1,6 +1,9 @@
 
+assets
+date*.tiff
+.gitignore
 __pycache__
 chrome-linux64
-chromedrive-linux64
+chromedriver-linux64
 chromedriver-linux64old
 chromedriver-linux64.zip
